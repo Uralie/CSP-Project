@@ -1,3 +1,5 @@
+from cmu_graphics import *
+
 Line(200,0,200,400)
 Label("Continuous",100,50,size = 25)
 Label("Standard",300,50,size = 25)
@@ -92,3 +94,6 @@ def onStep():
             SservoHorn.rotateAngle -= 2
                  
                      
+
+
+cmu_graphics.run()
