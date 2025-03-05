@@ -589,8 +589,8 @@ class App(object):
         except:
             self.title = "CMU CS Academy"
 
-        self._width = 800
-        self._height = 1200
+        self._width = 400
+        self._height = 400
         self._allKeysDown = set()
         self._modifiers = set()
         self.background = None
