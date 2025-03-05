@@ -1,3 +1,4 @@
+import cmu_graphics
 from cmu_graphics import *
 
 Line(200,0,200,400)
