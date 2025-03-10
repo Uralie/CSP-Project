@@ -5,10 +5,8 @@ Line(200,0,200,400)
 Label("Continuous",100,50,size = 25)
 Label("Standard",300,50,size = 25)
 
-#servo1
 Rect(65,118,70,150)
 
-#servo2
 Rect(265,118,70,150)
 
 CservoHorn = Group(
