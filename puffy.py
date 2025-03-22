@@ -1,4 +1,5 @@
 from cmu_graphics import *
+import cmu_graphics
 
 app.background = gradient('white', 'aliceBlue')
 

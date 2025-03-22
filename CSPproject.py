@@ -1,8 +1,6 @@
 import cmu_graphics
 from cmu_graphics import *
 
-SET_VALUES = [-90, -45, 0, 45, 90]
-
 x_offset = ((1200 - 400) / 2) - 50
 y_offset = (800 - 400) / 2
 
@@ -70,6 +68,37 @@ inputText = '0'
 targetAngle = 0
 rotationSpeed = 5
 
+setValueLabel = Label("Set Values", 435 + x_offset, 80 + y_offset, size=20, bold=True)
+setValueButtons = []
+
+def getAnglesnum():
+    x = False
+    while x == False:
+        setAngleNum = app.getTextInput('give the number of set angles you want your servo to go to. Must be between 0 and 6')
+        if int(setAngleNum) <0 or int(setAngleNum) >6:
+            x = False
+        else:
+            x = True
+    return setAngleNum
+SET_VALUES = [0]*int(getAnglesnum())
+def ButtonMaker():    
+    for i in range(len(SET_VALUES)):
+        g = False
+        while g == False:
+            setAngles = app.getTextInput('give one angle you want your servo to go to when you click. Must be between -90 and 90')
+            intsetangles = int(setAngles)
+            if intsetangles < -90 or intsetangles > 90:
+                g = False
+            else:
+                SET_VALUES[i] = int(setAngles)
+                button = Group(
+                    Rect(400 + x_offset, 100 + y_offset + i * 50, 70, 30, fill="lightBlue"),
+                    Label(str(SET_VALUES[i]), 435 + x_offset, 115 + y_offset + i * 50, size=15)
+                )
+                g = True
+                setValueButtons.append(button)
+ButtonMaker()
+
 def checkerror(inputText):
     try:
         value = float(inputText)
@@ -79,7 +108,7 @@ def checkerror(inputText):
             return False
         else:
             errorLabel.clear()
-            errorLabel.add(Label('No Error', 300 + x_offset, 380 + y_offset, size=15, fill='red'))
+            errorLabel.add(Label('', 300 + x_offset, 380 + y_offset, size=15, fill='red'))
             return True
     except ValueError:
         return False
@@ -125,14 +154,7 @@ def onStep():
     elif currentAngle > targetAngle:
         SservoHorn.rotateAngle = max(targetAngle, currentAngle - rotationSpeed, -90)
 
-setValueLabel = Label("Set Values", 435 + x_offset, 80 + y_offset, size=20, bold=True)
-setValueButtons = []
-for i, value in enumerate(SET_VALUES):
-    button = Group(
-        Rect(400 + x_offset, 100 + y_offset + i * 50, 70, 30, fill='lightBlue'),
-        Label(str(value), 435 + x_offset, 115 + y_offset + i * 50, size=15)
-    )
-    setValueButtons.append(button)
+    
 
 def onMousePress(mouseX, mouseY):
     global inputText, targetAngle
