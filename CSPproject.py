@@ -74,7 +74,7 @@ setValueButtons = []
 def getAnglesnum():
     x = False
     while x == False:
-        setAngleNum = app.getTextInput('give the number of set angles you want your servo to go to. Must be between 0 and 6')
+        setAngleNum = app.getTextInput('give the number of set angles you want your servo to go to. MUST BE BETWEEN 1 AND 6!!!!!')
         if int(setAngleNum) <0 or int(setAngleNum) >6:
             x = False
         else:
