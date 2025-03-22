@@ -85,7 +85,7 @@ def ButtonMaker():
     for i in range(len(SET_VALUES)):
         g = False
         while g == False:
-            setAngles = app.getTextInput('give one angle you want your servo to go to when you click. Must be between -90 and 90')
+            setAngles = app.getTextInput('give one angle you want your servo to go to when you click. MUST BE BETWEEN -90 AND 90!!!!!')
             intsetangles = int(setAngles)
             if intsetangles < -90 or intsetangles > 90:
                 g = False
