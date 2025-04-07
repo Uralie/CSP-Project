@@ -81,8 +81,8 @@ def getAnglesnum():
             x = True
     return setAngleNum
 SET_VALUES = [0]*int(getAnglesnum())
-def ButtonMaker():    
-    for i in range(len(SET_VALUES)):
+def ButtonMaker(setValues):    
+    for i in range(len(setValues)):
         g = False
         while g == False:
             setAngles = app.getTextInput('give one angle you want your servo to go to when you click. MUST BE BETWEEN -90 AND 90!!!!!')
@@ -90,14 +90,14 @@ def ButtonMaker():
             if intsetangles < -90 or intsetangles > 90:
                 g = False
             else:
-                SET_VALUES[i] = int(setAngles)
+                setValues[i] = int(setAngles)
                 button = Group(
                     Rect(400 + x_offset, 100 + y_offset + i * 50, 70, 30, fill="lightBlue"),
-                    Label(str(SET_VALUES[i]), 435 + x_offset, 115 + y_offset + i * 50, size=15)
+                    Label(str(setValues[i]), 435 + x_offset, 115 + y_offset + i * 50, size=15)
                 )
                 g = True
                 setValueButtons.append(button)
-ButtonMaker()
+ButtonMaker(SET_VALUES)
 
 def checkerror(inputText):
     try:
